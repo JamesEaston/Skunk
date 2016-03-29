@@ -1,24 +1,37 @@
 
 public class Player {
-	int score;
+	//Declares a score and standing variable for the player
+	private int score;
+	private boolean standing;
 
-	public static void addScore() {
-
+	//Constructor for the player, sets the score to 0 and standing to true
+	public Player(){
+		score = 0;
+		standing = true;
 	}
 
-	public static void resetScore() {
-
+	//Increments score by the indicated amount
+	public void addScore(int n) {
+		score += n;
 	}
 
-	public static int printScore() {
-
+	//Resets score to 0
+	public void resetScore() {
+		score = 0;
 	}
 
-	public static void getStanding() {
-
+	//Returns the score of the player
+	public int getScore() {
+		return score;
 	}
 
-	public static void setStanding() {
+	//Returns whether the player is standing or not
+	public boolean getStanding() {
+		return standing;
+	}
 
+	//Sets the player to standing or sitting
+	public void setStanding(boolean position) {
+		standing = position;
 	}
 }
