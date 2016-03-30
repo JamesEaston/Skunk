@@ -27,7 +27,7 @@ public class Dice{
 		if(die == 2){
 			output += " -----------\n";
 			output += "|           |\n";
-			output += "|   *       |\n";
+			output += "|  *        |\n";
 			output += "|           |\n";
 			output += "|        *  |\n";
 			output += "|           |\n";
@@ -45,9 +45,9 @@ public class Dice{
 		if(die == 4){
 			output += " -----------\n";
 			output += "|           |\n";
-			output += "|   *    *  |\n";
+			output += "|  *     *  |\n";
 			output += "|           |\n";
-			output += "|   *    *  |\n";
+			output += "|  *     *  |\n";
 			output += "|           |\n";
 			output += " -----------\n";
 		}
