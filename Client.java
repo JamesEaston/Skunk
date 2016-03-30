@@ -12,6 +12,7 @@ public class Client{
 	static Scanner input = new Scanner(System.in);
 	static int tempVariable;
 	static Player[] players;
+	static Dice dice;
 
 	public static void main(String[] args) {
 		//Sets playRound to true by default
@@ -26,11 +27,16 @@ public class Client{
 			System.out.println("Player: " + (i + 1) + " what is your name?");
 			players[i] = new Player(input.nextLine());
 		}
+		dice = new Dice();
 		
 		while(playRound){
 			play = true;
 
 			while (play){
+				rolledNums = dice.roll();
+				System.out.println(dice.toString(rolledNums[0]));
+				System.out.println(dice.toString(rolledNums[1]));
+				tempVariable = dice.checkEnd(rolledNums[0], rolledNums[1]);
 			}
 
 			System.out.println("Would you like to play another round? (Reply true or false)");
