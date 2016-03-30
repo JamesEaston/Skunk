@@ -3,11 +3,13 @@ public class Player {
 	//Declares a score and standing variable for the player
 	private int score;
 	private boolean standing;
+	private String name;
 
 	//Constructor for the player, sets the score to 0 and standing to true
-	public Player(){
+	public Player(String pName){
 		score = 0;
 		standing = true;
+		name = pName;
 	}
 
 	//Increments score by the indicated amount
@@ -33,5 +35,9 @@ public class Player {
 	//Sets the player to standing or sitting
 	public void setStanding(boolean position) {
 		standing = position;
+	}
+
+	public String getName(){
+		return name;
 	}
 }
