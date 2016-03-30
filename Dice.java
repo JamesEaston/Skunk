@@ -16,60 +16,60 @@ public class Dice{
 	public String toString(int die){
 		String output = "";
 		if(die == 1){
-			output += "------------\n";
+			output += " -----------\n";
 			output += "|           |\n";
 			output += "|           |\n";
 			output += "|     *     |\n";
 			output += "|           |\n";
 			output += "|           |\n";
-			output += "------------\n";
+			output += " -----------\n";
 		}
 		if(die == 2){
-			output += "------------\n";
+			output += " -----------\n";
 			output += "|           |\n";
 			output += "|   *       |\n";
 			output += "|           |\n";
 			output += "|        *  |\n";
 			output += "|           |\n";
-			output += "------------\n";
+			output += " -----------\n";
 		}
 		if(die == 3){
-			output += "------------\n";
+			output += " -----------\n";
 			output += "|           |\n";
 			output += "|  *        |\n";
 			output += "|     *     |\n";
 			output += "|        *  |\n";
 			output += "|           |\n";
-			output += "------------\n";
+			output += " -----------\n";
 		}
 		if(die == 4){
-			output += "------------\n";
+			output += " -----------\n";
 			output += "|           |\n";
 			output += "|   *    *  |\n";
 			output += "|           |\n";
 			output += "|   *    *  |\n";
 			output += "|           |\n";
-			output += "------------\n";
+			output += " -----------\n";
 		}
 		if(die == 5){
-			output += "------------\n";
+			output += " -----------\n";
 			output += "|           |\n";
 			output += "|  *     *  |\n";
 			output += "|     *     |\n";
 			output += "|  *     *  |\n";
 			output += "|           |\n";
-			output += "------------\n";
+			output += " -----------\n";
 		}
 		if(die == 6){
-			output += "------------\n";
+			output += " -----------\n";
 			output += "|           |\n";
 			output += "|  *     *  |\n";
 			output += "|  *     *  |\n";
 			output += "|  *     *  |\n";
 			output += "|           |\n";
-			output += "------------\n";
+			output += " -----------\n";
 		}
-		
+
 		return output;
 	}
 
