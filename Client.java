@@ -13,6 +13,7 @@ public class Client{
 	static int tempVariable;
 	static Player[] players;
 	static Dice dice;
+	static boolean choice;
 
 	public static void main(String[] args) {
 		//Sets playRound to true by default
@@ -29,18 +30,56 @@ public class Client{
 		}
 		dice = new Dice();
 		
-		while(playRound){
+		int roundNum = 1;
+
+		while(playRound & roundNum < 6){
 			play = true;
+			choice = true;
+
+			if(roundNum == 1) {
+				System.out.println("Round: S");
+			}
+
+			if(roundNum == 2){
+				System.out.println("Round: SK");
+			}
+
+			if(roundNum == 3){
+				System.out.println("Round: SKU");
+			}
+
+			if(roundNum == 4){
+				System.out.println("Round: SKUN");
+			}
+
+			if(roundNum == 5){
+				System.out.println("Round: SKUNK");
+			}
+
 
 			while (play){
-				rolledNums = dice.roll();
-				System.out.println(dice.toString(rolledNums[0]));
-				System.out.println(dice.toString(rolledNums[1]));
-				tempVariable = dice.checkEnd(rolledNums[0], rolledNums[1]);
+				while(choice){
+					rolledNums = dice.roll();
+					System.out.println(dice.toString(rolledNums[0]));
+					System.out.println(dice.toString(rolledNums[1]));
+					tempVariable = dice.checkEnd(rolledNums[0], rolledNums[1]);
+					//add a if statement to make sure it checks the check end
+					System.out.println("Would you like to roll again? (Reply true or false)");
+					choice = Boolean.parseBoolean(input.nextLine());
+					if(choice == false){
+						play = false;
+					}
+				}
 			}
 
 			System.out.println("Would you like to play another round? (Reply true or false)");
 			playRound = Boolean.parseBoolean(input.nextLine());
+			//Eventually print out ScoreBoard here instead of Game over.
+			if(playRound == false){
+				System.out.println("Game Over");
+			} else {
+				roundNum++;
+			}
 		}
 	}
 
