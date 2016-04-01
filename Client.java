@@ -72,16 +72,27 @@ public class Client{
 				}
 				else{
 					score += rolledNums[0] + rolledNums[1];
-					System.out.println("Who would like to sit down");
-					tempString = input.nextLine();
-				}		
+					for (int i = 0; i < players.length; i++){
+						if(players[i].getStanding()){
+							System.out.println("Would " + players[i].getName() + " like to stay standing? (return true or false)");
+							players[i].setStanding(Boolean.parseBoolean(input.nextLine()));
+							if(!players[i].getStanding()){
+								players[i].addScore(score);
+							}
+						}
+					}
+				}
 			}
 
 			System.out.println("Would you like to play another round? (Reply true or false)");
 			playRound = Boolean.parseBoolean(input.nextLine());
-			//Eventually print out ScoreBoard here instead of Game over.
+			System.out.println(printScoreboard());
 			roundNum++;
 			score = 0;
+
+			for (int i = 0; i < players.length; i++){
+				players[i].setStanding(true);
+			}
 		}
 	}
 
@@ -92,5 +103,17 @@ public class Client{
 			}
 		}
 		return true;
+	}
+
+	public static String printScoreboard(){
+		String output = "";
+		output += "-------------------------\n";
+		for(int i = 0; i < players.length; i++){
+			output += players[i].getName() + ": " + players[i].getScore();
+			output += "\n";
+		}
+		output += "-------------------------\n";
+
+		return output;
 	}
 }
