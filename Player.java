@@ -40,4 +40,16 @@ public class Player {
 	public String getName(){
 		return name;
 	}
+
+	public static printScoreboard(){
+		String output = "";
+		output += "-------------------------\n";
+		for(int i = 0; i < players.length(); i++){
+			output += players[i].getName() + ": " + players[i].getScore();
+			output += "\n";
+		}
+		output += "-------------------------\n";
+
+		return output;
+	}
 }
