@@ -6,7 +6,7 @@ public class Client{
 	//play variable to assure that the round is still playable, and an array
 	//to store the numbers which were rolled
 	static boolean playRound;
-	static boolean play;
+	static String tempString;
 	static int[] rolledNums = new int[2];
 	static int score;
 	static Scanner input = new Scanner(System.in);
@@ -32,54 +32,56 @@ public class Client{
 		
 		int roundNum = 1;
 
-		while(playRound & roundNum < 6){
-			play = true;
+		while(playRound && roundNum < 6){
 			choice = true;
 
 			if(roundNum == 1) {
 				System.out.println("Round: S");
 			}
 
-			if(roundNum == 2){
+			else if(roundNum == 2){
 				System.out.println("Round: SK");
 			}
 
-			if(roundNum == 3){
+			else if(roundNum == 3){
 				System.out.println("Round: SKU");
 			}
 
-			if(roundNum == 4){
+			else if(roundNum == 4){
 				System.out.println("Round: SKUN");
 			}
 
-			if(roundNum == 5){
+			else{
 				System.out.println("Round: SKUNK");
 			}
 
-
-			while (play){
-				while(choice){
-					rolledNums = dice.roll();
-					System.out.println(dice.toString(rolledNums[0]));
-					System.out.println(dice.toString(rolledNums[1]));
-					tempVariable = dice.checkEnd(rolledNums[0], rolledNums[1]);
-					//add a if statement to make sure it checks the check end
-					System.out.println("Would you like to roll again? (Reply true or false)");
-					choice = Boolean.parseBoolean(input.nextLine());
-					if(choice == false){
-						play = false;
+			while(choice){
+				rolledNums = dice.roll();
+				System.out.println(dice.toString(rolledNums[0]));
+				System.out.println(dice.toString(rolledNums[1]));
+				tempVariable = dice.checkEnd(rolledNums[0], rolledNums[1]);
+				if (tempVariable > 0){
+					if (tempVariable == 2){
+						for (int i = 0; i < players.length; i++){
+							if (players[i].getStanding()){
+								players[i].resetScore();
+							}
+						}
+						choice = false;
 					}
 				}
+				else{
+					score += rolledNums[0] + rolledNums[1];
+					System.out.println("Who would like to sit down");
+					tempString = input.nextLine();
+				}		
 			}
 
 			System.out.println("Would you like to play another round? (Reply true or false)");
 			playRound = Boolean.parseBoolean(input.nextLine());
 			//Eventually print out ScoreBoard here instead of Game over.
-			if(playRound == false){
-				System.out.println("Game Over");
-			} else {
-				roundNum++;
-			}
+			roundNum++;
+			score = 0;
 		}
 	}
 
