@@ -82,6 +82,7 @@ public class Client{
 						}
 					}
 				}
+				choice = validStanding();
 			}
 
 			System.out.println("Would you like to play another round? (Reply true or false)");
@@ -89,6 +90,7 @@ public class Client{
 			System.out.println(printScoreboard());
 			roundNum++;
 			score = 0;
+			tempVariable = 0;
 
 			for (int i = 0; i < players.length; i++){
 				players[i].setStanding(true);
