@@ -63,6 +63,7 @@ public class Client{
 					System.out.println(dice.toString(rolledNums[0]));
 					System.out.println(dice.toString(rolledNums[1]));
 					tempVariable = dice.checkEnd(rolledNums[0], rolledNums[1]);
+					//add a if statement to make sure it checks the check end
 					System.out.println("Would you like to roll again? (Reply true or false)");
 					choice = Boolean.parseBoolean(input.nextLine());
 					if(choice == false){
