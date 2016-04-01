@@ -73,13 +73,12 @@ public class Dice{
 		return output;
 	}
 
-    //Fix validation of dice values 6 and 5
 	public static int checkEnd(int num1, int num2){
-		if(((num1 + num2) % 6 == 2) && ((num1 + num2) > 6)) {
+		if((num1 == 6 || num2 == 6) && (num1 + num2 % 6 == 2)) {
 			return 1;
 		}
 
-		if(((num1 + num2) % 5 == 3) && ((num1 + num2) > 5)) {
+		if((num1 == 5 || num2 == 5) && (num1 + num2 % 5 == 3)) {
 			return 1;
 		}
 
