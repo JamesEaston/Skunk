@@ -14,6 +14,7 @@ public class Client{
 	static Player[] players;
 	static Dice dice;
 	static boolean choice;
+	static int winner;
 
 	public static void main(String[] args) {
 		//Sets playRound to true by default
@@ -56,9 +57,11 @@ public class Client{
 			}
 
 			while(choice){
+
 				rolledNums = dice.roll();
 				System.out.println(dice.toString(rolledNums[0]));
-				System.out.println(dice.toString(rolledNums[1]));
+				System.out.print(dice.toString(rolledNums[1]));
+
 				tempVariable = dice.checkEnd(rolledNums[0], rolledNums[1]);
 				if (tempVariable > 0){
 					if (tempVariable == 2){
@@ -67,9 +70,11 @@ public class Client{
 								players[i].resetScore();
 							}
 						}
-						choice = false;
 					}
+					choice = false;
+					System.out.println("Round over!");
 				}
+
 				else{
 					score += rolledNums[0] + rolledNums[1];
 					for (int i = 0; i < players.length; i++){
@@ -81,13 +86,16 @@ public class Client{
 							}
 						}
 					}
+					choice = validStanding();
 				}
-				choice = validStanding();
 			}
 
-			System.out.println("Would you like to play another round? (Reply true or false)");
-			playRound = Boolean.parseBoolean(input.nextLine());
 			System.out.println(printScoreboard());
+			if (roundNum < 5){
+				System.out.println("Would you like to play another round? (Reply true or false)");
+				playRound = Boolean.parseBoolean(input.nextLine());
+			}
+
 			roundNum++;
 			score = 0;
 			tempVariable = 0;
@@ -96,15 +104,26 @@ public class Client{
 				players[i].setStanding(true);
 			}
 		}
+
+		winner = 0;
+		for(int i = 1; i < players.length; i++){
+			if(players[i].getScore() > players[winner].getScore()){
+				winner = i;
+			}
+		}
+
+		System.out.println(players[winner].getName() + " is the winner with a score of " + players[winner].getScore() + "!");
+
+		System.out.println("Thanks for playing!");
 	}
 
 	public static boolean validStanding(){
 		for(int i = 0; i < players.length; i++){
 			if(players[i].getStanding()){
-				return false;
+				return true;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	public static String printScoreboard(){

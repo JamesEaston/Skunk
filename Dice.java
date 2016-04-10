@@ -1,15 +1,17 @@
 import java.util.*;
 
 public class Dice{
-	private Random rand = new Random();
-	private int[] rolled = new int[2];
+	private Random rand;
+	private int[] rolled;
 
 	public Dice(){
+	 rolled = new int[2];
+	 rand = new Random();
 	}
 
 	public int[] roll(){
-		rolled[0] = rand.nextInt(6);
-		rolled[1] = rand.nextInt(6);
+		rolled[0] = (rand.nextInt(6) + 1);
+		rolled[1] = (rand.nextInt(6) + 1);
 		return rolled;
 	}
 
@@ -24,7 +26,7 @@ public class Dice{
 			output += "|           |\n";
 			output += " -----------\n";
 		}
-		if(die == 2){
+		else if(die == 2){
 			output += " -----------\n";
 			output += "|           |\n";
 			output += "|  *        |\n";
@@ -33,7 +35,7 @@ public class Dice{
 			output += "|           |\n";
 			output += " -----------\n";
 		}
-		if(die == 3){
+		else if(die == 3){
 			output += " -----------\n";
 			output += "|           |\n";
 			output += "|  *        |\n";
@@ -42,7 +44,7 @@ public class Dice{
 			output += "|           |\n";
 			output += " -----------\n";
 		}
-		if(die == 4){
+		else if(die == 4){
 			output += " -----------\n";
 			output += "|           |\n";
 			output += "|  *     *  |\n";
@@ -51,7 +53,7 @@ public class Dice{
 			output += "|           |\n";
 			output += " -----------\n";
 		}
-		if(die == 5){
+		else if(die == 5){
 			output += " -----------\n";
 			output += "|           |\n";
 			output += "|  *     *  |\n";
@@ -60,7 +62,7 @@ public class Dice{
 			output += "|           |\n";
 			output += " -----------\n";
 		}
-		if(die == 6){
+		else if(die == 6){
 			output += " -----------\n";
 			output += "|           |\n";
 			output += "|  *     *  |\n";
@@ -74,15 +76,15 @@ public class Dice{
 	}
 
 	public static int checkEnd(int num1, int num2){
-		if((num1 == 6 || num2 == 6) && (num1 + num2 % 6 == 2)) {
+		if((num1 == 6 && num2 == 2) && (num1 + num2 % 6 == 2)) {
 			return 1;
 		}
 
-		if((num1 == 5 || num2 == 5) && (num1 + num2 % 5 == 3)) {
+		if((num1 == 5 && num2 == 3) || (num1 == 3 && num2 == 5)) {
 			return 1;
 		}
 
-		if((num1 + num2 == 2)) {
+		if((num1 + num2) == 2) {
 			return 2;
 		}
 		
