@@ -14,7 +14,7 @@ public class Client{
 	static Player[] players;
 	static Dice dice;
 	static boolean choice;
-	static int winner;
+	static List<Integer> winners = new ArrayList<Integer>();
 
 	public static void main(String[] args) {
 		//Sets playRound to true by default
@@ -105,16 +105,33 @@ public class Client{
 			}
 		}
 
-		winner = 0;
+		winners.add(0);
 		for(int i = 1; i < players.length; i++){
-			if(players[i].getScore() > players[winner].getScore()){
-				winner = i;
+			if(players[i].getScore() == players[(winners.get(0)).intValue()].getScore()){
+				winners.add(i);
+			}
+
+			else if(players[i].getScore() > players[(winners.get(0)).intValue()].getScore()){
+				winners.clear();
+				winners.add(i);
 			}
 		}
 
-		System.out.println(players[winner].getName() + " is the winner with a score of " + players[winner].getScore() + "!");
+		if (winners.size() > 1){
+			System.out.print("\n It's a tie between ");
+			for(int i = 0; i < winners.size(); i++){
+				System.out.print(players[(winners.get(i)).intValue()].getName() + " ");
+				if(i != winners.size() - 1){
+					System.out.print("and ");
+				}
+			}
+			System.out.print("with a score of " + players[(winners.get(0)).intValue()].getScore() + "!");
+		}
+		else{
+			System.out.print("\n" + players[(winners.get(0)).intValue()].getName() + " is the winner with a score of " + players[(winners.get(0)).intValue()].getScore() + "!");
+		}
 
-		System.out.println("Thanks for playing!");
+		System.out.println("\nThanks for playing! \n");
 	}
 
 	public static boolean validStanding(){
